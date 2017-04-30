@@ -7,6 +7,7 @@ of adding and managing releases was great.
 So This API client is mainly for exporting all releases, so they can be
 put in a local MongoDb instance which provides better search.
 
+    <?php
     # set your PSR-4 autoloader to namespace the src directory to contain davebarnwell\
 
     $yourApiToken = '';
