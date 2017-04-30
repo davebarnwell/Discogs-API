@@ -1,0 +1,19 @@
+{
+    "name": "davebarnwell/discogs",
+    "description": "PHP API to Discogs",
+    "require": {
+        "guzzlehttp/guzzle": "^6.2",
+        "symfony/yaml": "^3.2"
+    },
+    "authors": [
+        {
+            "name": "Dave Barnwell",
+            "email": "dave@freshsauce.co.uk"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "davebarnwell\\": "src/"
+        }
+    }
+}
