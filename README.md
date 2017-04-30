@@ -24,4 +24,4 @@ put in a local MongoDb instance which provides better search.
         $items    = array_merge($items, $response['releases']);
     }
     var_dump($items); # dump out all the music
-
+    ```
