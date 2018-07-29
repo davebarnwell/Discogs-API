@@ -11,7 +11,8 @@ $parentDir = dirname(__DIR__);
 $rootDir   = dirname($parentDir);
 require_once $rootDir . '/vendor/autoload.php';
 
-$cache = new CacheSingleValue(__DIR__ . '/collection.cache', 3600 * 12);
+define('CACHE_TIMEOUT', 3600 * 12);
+$cache = new CacheSingleValue(__DIR__ . '/collection.cache', CACHE_TIMEOUT);
 $items = $cache->getCache();
 if ($items == null) {
     $config = \Symfony\Component\Yaml\Yaml::parse(file_get_contents($parentDir . '/config.yml'));
@@ -29,9 +30,9 @@ if ($items == null) {
     $cache->writeCache($items);
 }
 $formats = [];
-foreach($items as $item) {
+foreach ($items as $item) {
     $format = $item['basic_information']['formats'][0]['name'];
-    $qty = $item['basic_information']['formats'][0]['qty'];
+    $qty    = $item['basic_information']['formats'][0]['qty'];
     if (!isset($formats[$format])) {
         $formats[$format] = 0;
     }
@@ -95,9 +96,14 @@ class CacheSingleValue
         <div class="album-filters-container">
             <div>&nbsp;</div>
             <ul class="album-formats-nav">
-                <li class="album-formats-nav__item album-formats-nav__item_selected" data-format="*">All (<?=number_format(count($items),0)?>)</li>
-                <?php foreach($formats as $format => $qty): ?>
-                    <li class="album-formats-nav__item" data-format="<?=htmlspecialchars(strtolower($format))?>"><?=htmlspecialchars($format)?> (<?=number_format($qty,0)?>)</li>
+                <li class="album-formats-nav__item album-formats-nav__item_selected" data-format="*">All
+                    (<?= number_format(count($items), 0) ?>)
+                </li>
+                <?php foreach ($formats as $format => $qty): ?>
+                    <li class="album-formats-nav__item"
+                        data-format="<?= htmlspecialchars(strtolower($format)) ?>"><?= htmlspecialchars($format) ?>
+                        (<?= number_format($qty, 0) ?>)
+                    </li>
                 <?php endforeach; ?>
             </ul>
             <div class="album-search__container">
