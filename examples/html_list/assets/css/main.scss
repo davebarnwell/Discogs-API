@@ -1,0 +1,99 @@
+@import '_reset.css';
+html, body {
+  background-color: black;
+  color: aliceblue;
+}
+.page_container {
+  width: 98%;
+  min-width: 320px;
+  margin: 1rem auto;
+}
+$spacer: 1rem;
+h1 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: $spacer 0;
+}
+.album-filters-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+.album-search__input {
+  margin: $spacer 0;
+  width: 100%;
+  border-radius: 20px;
+  height: 1rem;
+  &:focus {
+    outline: none;
+  }
+}
+.album-formats-nav {
+  font-size: 0.8rem;
+  margin: $spacer auto;
+  width: 320px;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #b0b0b0;
+}
+.album-formats-nav__item {
+  cursor: pointer;
+  padding: 0.3rem;
+  text-align: center;
+  + .album-formats-nav__item {
+    border-left: 1px solid;
+    border-color: #b0b0b0;
+  }
+}
+.album-formats-nav__item_selected {
+  background-color: #b0b0b0;
+  color: black;
+}
+$album_small_font: 0.8rem;
+$album_field_vspacer: 0.3rem;
+.album-list-container {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 1rem;
+}
+.album-list-instance {
+  background-color: #1f1f1f;
+  padding: 0.5rem;
+}
+.album-list-instance__image {
+  text-align: center;
+  min-height: 150px;
+  img {
+    max-width: 100%;
+  }
+}
+.album-list-instance__title {
+  padding-top: $album_field_vspacer;
+}
+.album-list-instance__artist {
+  padding-top: $album_field_vspacer;
+  font-style: italic;
+}
+.album-list-instance__meta {
+  padding-top: $album_field_vspacer;
+  display: grid;
+  grid-template-columns: 1fr 1fr 5fr;
+  grid-gap: $album_small_font;
+  color: #b0b0b0;
+}
+.album-list-instance__format {
+  font-size: $album_small_font;
+  text-align: right;
+}
+.album-list-instance__format-copies {
+  font-size: $album_small_font;
+  text-align: left;
+
+}
+.album-list-instance__year {
+  font-size: $album_small_font;
+  text-align: right;
+}

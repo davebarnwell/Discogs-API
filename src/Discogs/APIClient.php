@@ -74,7 +74,10 @@ class APIClient
      * @param string $method
      * @param string $url
      *
+     * @param string $body
+     *
      * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     private function sendRequest(string $method, string $url, string $body = '')
     {
@@ -118,6 +121,7 @@ class APIClient
      * Get first page of items stored in the users all collection
      *
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getUsersCollectionAllReleases()
     {
@@ -165,6 +169,7 @@ class APIClient
     /**
      * @return array
      * @throws NoNextPageException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getNextPage()
     {

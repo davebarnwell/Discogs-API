@@ -1,0 +1,93 @@
+@import url(_reset.css);
+html, body {
+  background-color: black;
+  color: aliceblue; }
+
+.page_container {
+  width: 98%;
+  min-width: 320px;
+  margin: 1rem auto; }
+
+h1 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 1rem 0; }
+
+.album-filters-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; }
+
+.album-search__input {
+  margin: 1rem 0;
+  width: 100%;
+  border-radius: 20px;
+  height: 1rem; }
+  .album-search__input:focus {
+    outline: none; }
+
+.album-formats-nav {
+  font-size: 0.8rem;
+  margin: 1rem auto;
+  width: 320px;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #b0b0b0; }
+
+.album-formats-nav__item {
+  cursor: pointer;
+  padding: 0.3rem;
+  text-align: center; }
+  .album-formats-nav__item + .album-formats-nav__item {
+    border-left: 1px solid;
+    border-color: #b0b0b0; }
+
+.album-formats-nav__item_selected {
+  background-color: #b0b0b0;
+  color: black; }
+
+.album-list-container {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 1rem; }
+
+.album-list-instance {
+  background-color: #1f1f1f;
+  padding: 0.5rem; }
+
+.album-list-instance__image {
+  text-align: center;
+  min-height: 150px; }
+  .album-list-instance__image img {
+    max-width: 100%; }
+
+.album-list-instance__title {
+  padding-top: 0.3rem; }
+
+.album-list-instance__artist {
+  padding-top: 0.3rem;
+  font-style: italic; }
+
+.album-list-instance__meta {
+  padding-top: 0.3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 5fr;
+  grid-gap: 0.8rem;
+  color: #b0b0b0; }
+
+.album-list-instance__format {
+  font-size: 0.8rem;
+  text-align: right; }
+
+.album-list-instance__format-copies {
+  font-size: 0.8rem;
+  text-align: left; }
+
+.album-list-instance__year {
+  font-size: 0.8rem;
+  text-align: right; }
+
+/*# sourceMappingURL=main.css.map */
