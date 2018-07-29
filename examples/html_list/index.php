@@ -1,7 +1,11 @@
 <?php
-// php -S localhost:8000
 /**
  * get All the items (albums) in the all collection and list as html
+ *
+ * in this directory from the termainl run php -S localhost:8000
+ * Then point your browser at http://localhost:8000 to see your collection
+ * If your collection is large, this can take a few minutes to load first time
+ * it's then cached locally for 12hrs
  */
 $parentDir = dirname(__DIR__);
 $rootDir   = dirname($parentDir);
