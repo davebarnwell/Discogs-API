@@ -27,6 +27,7 @@ if ($items == null) {
         $response = $api->getNextPage();
         $items    = array_merge($items, $response['releases']);
     }
+    usort($items,sortByArtistThenAlbumYearThenByTitle);
     $cache->writeCache($items);
 }
 $formats = [];
@@ -36,7 +37,21 @@ foreach ($items as $item) {
     if (!isset($formats[$format])) {
         $formats[$format] = 0;
     }
-    $formats[$format] += $qty;
+    $formats[$format]++;
+}
+
+function sortByArtistThenAlbumYearThenByTitle($a,$b) {
+    if ($a['basic_information']['artists'][0]['name'] === $b['basic_information']['artists'][0]['name']) {
+        // artist match so sort by year
+        if ($a['basic_information']['year'] === $b['basic_information']['year']) {
+            // year match so sort by album title
+            return $a['basic_information']['title'] <=>  $b['basic_information']['title'];
+        }
+        // sort by album year
+        return $a['basic_information']['year'] <=>  $b['basic_information']['year'];
+    }
+    // sort by artist
+    return $a['basic_information']['artists'][0]['name'] <=>  $b['basic_information']['artists'][0]['name'];
 }
 
 class CacheSingleValue
@@ -125,7 +140,7 @@ class CacheSingleValue
                     <div class="album-list-instance__meta">
                         <div class="album-list-instance__format"><?= htmlspecialchars($item['basic_information']['formats'][0]['name']); ?></div>
                         <div class="album-list-instance__format-copies"><?= htmlspecialchars($item['basic_information']['formats'][0]['qty']); ?></div>
-                        <div class="album-list-instance__year"><?= htmlspecialchars($item['basic_information']['year']); ?></div>
+                        <div class="album-list-instance__year"><?= $item['basic_information']['year'] ? htmlspecialchars($item['basic_information']['year']) : '&mdash;'; ?></div>
                     </div>
                 </li>
             <?php endforeach; ?>
